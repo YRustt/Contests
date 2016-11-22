@@ -4,6 +4,7 @@ from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import scale, normalize
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
 from sklearn.grid_search import GridSearchCV
 
 
@@ -73,6 +74,20 @@ class Models:
         proba = est.predict_proba(real_test_X)
         return proba[:, 1]
 
+    @staticmethod
+    def model_2(train_X, test_X, train_y, test_y, real_test_X):
+        est = SVC(probability=True, verbose=True)
+        est.fit(train_X, train_y)
+
+        proba = est.predict_proba(train_X)
+        print(roc_auc_score(train_y, proba[:, 1]))
+
+        proba = est.predict_proba(test_X)
+        print(roc_auc_score(test_y, proba[:, 1]))
+
+        proba = est.predict_proba(real_test_X)
+        return proba[:, 1]
+
 
 if __name__ == '__main__':
     data, test_data = read_train(), read_test()
@@ -81,6 +96,7 @@ if __name__ == '__main__':
     train_X, test_X, real_test_X = df2features(train_X, train_X), df2features(test_X, train_X), df2features(test_data, train_X)
 
     proba = Models.model_1(train_X, test_X, train_y, test_y, real_test_X)
+    proba = Models.model_2(train_X, test_X, train_y, test_y, real_test_X)
 
     prediction = pd.DataFrame(data={'id': test_data['id'], 'probability': proba})
     prediction.to_csv('data/prediction.csv', index=False)
