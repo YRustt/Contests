@@ -3,6 +3,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[russian]{babel}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage{amsmath}
 \title{Отчёт}
 \date{}
 \author{}
@@ -14,17 +15,29 @@
   \item Предсказание
  \end{itemize}
  \section{Получение фич}
- Считываем данные в pandas.DataFrame.
+ Считываем данные в pandas.DataFrame. Разобъём данные на train и test. 
  \begin{enumerate}
   \item[\textbf{lang}:] На основе обучающей выборки посчитаем среднее количество ретвитов для каждого значения 'user.lang'. На основании этого
 			получим значения для тестовой выборки. Если для какого-нибудь значения 'user.lang' в тестовой выборке небыло таковых в 
 			обучающей, то выберем в этом случае среднее средних значений по всем значениям 'user.lang'.
-  \item[\textbf{text}:] Из текста возьмём количество количество '@', 'http, '\#', '?'.
-  \item[\textbf{description}:] И отсюда то же, что из текста.
-  \item[\textbf{time zone}:] Аналогично 'user.lang'.
+			
+			\begin{eqnarray*}
+			table &=& train\_data[['user.lang', 'retweet\_count']].groupby(by='user.lang').mean()\\
+			table &=& table.to\_dict()['retweet\_count']
+			\end{eqnarray*}
+
+  \item[\textbf{text}:] Из текста возьмём количество вхождений '@', 'http', '\#' и '?'.
+  \item[\textbf{description}:] Здесь берём то же, что из поля text.
+  \item[\textbf{time zone}:] Аналогично user.lang.
  \end{enumerate}
- А так же возьмём в качестве фич все не текстовые поля. Можно было бы попробывать 
+ А так же возьмём в качестве фич все не текстовые поля. 
 \section{Создание модели}
+
+ В качестве моделей возьмём ensembly.RandomForestClassifier и ensembly.GradientBoostingClassifier. Было желание попробывать svm.SVC, но за 
+ 2 часа работы всё это так и не отработало :c
  
+ Для перебора параметров будем использовать model\_selection.GridSearchCV (в старых версиях scikit-learn - grid\_search.GridSearchCV) с 
+ 3-кратной кросс-валидацией.
 \section{Предсказание}
+ GradientBoostingClassifier выдаёт примерно одинаковое качество на обучении и тестировании, поэтому для предсказания выберем его.
 \end{document}
