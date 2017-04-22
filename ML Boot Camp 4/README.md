@@ -1,3 +1,3 @@
-#Задача с "Секретом"
+# Задача с "Секретом"
 
 http://mlbootcamp.ru/championship/11/
