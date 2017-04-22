@@ -4,3 +4,4 @@ __pycache__
 data/
 word2vec/
 doc2vec/
+.ipynb_checkpoints
