@@ -1,3 +1,3 @@
-# Event Recommendation Engine Challenge
-
-https://www.kaggle.com/c/event-recommendation-engine-challenge/data
+# ШАД: Лабораторная работа 4. Рекомендательные системы и категориальные признаки
+ 
+http://nbviewer.jupyter.org/urls/dl.dropbox.com/s/bck0bz7dgwv2k0w/lab_4.ipynb
