@@ -1,3 +1,3 @@
 # Sentiment Analysis
 
-https://inclass.kaggle.com/c/sentiment-analysis2/details/evaluation
+https://inclass.kaggle.com/c/sentiment-analysis2
