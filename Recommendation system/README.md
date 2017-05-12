@@ -7,7 +7,3 @@ http://www.machinelearning.ru/wiki/images/9/95/Voron-ML-CF.pdf
 
 https://turi.com/products/create/docs/graphlab.toolkits.html
 
-![image1](1.png)
-
-![image2](2.png)
-
