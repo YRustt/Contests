@@ -1,6 +1,4 @@
----
 # Superset
----
 
 1. [Superset's github](https://github.com/airbnb/superset)
 2. [Superset's documentaion](http://airbnb.io/superset/)
