@@ -1,11 +1,13 @@
-data/
+# PyCharm
 .idea
-venv/*
-__pycache__
-word2vec/
-doc2vec/
-.ipynb_checkpoints
-Recommendation\ system/data/solution/
-Recommendation\ system/data/solution/
+
+# Virtualenv
+venv/
+env/
 .python-version
 
+# CPython
+__pycache__
+
+# Jupyter notebook
+.ipynb_checkpoints/
